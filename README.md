@@ -4,6 +4,10 @@
 
 ### Setup
 
+Dependencies:
+- NodeJS: https://nodejs.org/en/
+- NPM: `npm install -g npm`
+
 From the projects root directory, run:
 - `npm install` to install dependencies
 - `npm start` to run the project
