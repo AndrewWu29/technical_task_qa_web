@@ -27,7 +27,7 @@ We are in the middle of the sprint and the following 2 user stories were just mo
 
 #### Scenario 1 - User access the web site for first time (when not logged in yet)
 
-Given - the user opens app for the first time (when not logged in yet)
+Given - the user opens web site for the first time (when not logged in yet)
 
 Then - login screen with user name and password entries and login button is displayed
 
