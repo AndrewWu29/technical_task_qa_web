@@ -11,6 +11,7 @@ Dependencies:
 From the projects root directory, run:
 - `npm install` to install dependencies
 - `npm start` to run the project
+- `npm test` to run the project automation testing
 
 
 ### Description
