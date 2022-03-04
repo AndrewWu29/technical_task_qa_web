@@ -1,0 +1,259 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 7,
+    "passes": 7,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-03-04T17:40:50.761Z",
+    "end": "2022-03-04T17:41:36.635Z",
+    "duration": 35566,
+    "testsRegistered": 7,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "543a693b-43c9-4555-a04f-2f1f810e68cc",
+      "title": "",
+      "fullFile": "cypress/integration/news.ts",
+      "file": "cypress/integration/news.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1532173c-740b-47fd-bac6-de64b36ffab2",
+          "title": "News test suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "News cards are loaded",
+              "fullTitle": "News test suite News cards are loaded",
+              "timedOut": null,
+              "duration": 16522,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Given - there is internet connection\n// When - the user successfully signs in to the app\n/** Then - news cards are displayed in rows\n * and each card contains\n * an image, text and a view button\n * (cards can have one or more images\n * scrollable horizontally)\n */\nlogInPage.login();\ncy.get('div[class=react-swipeable-view-container]', { timeout: 6000 }).its('length').then(newsCardsCount => {\n    let newsCardsArray = [];\n    newsCardsArray[newsCardsCount - 1] = newsCardsCount;\n    let countNum = 0;\n    cy.wrap(newsCardsArray).each((index) => {\n        cy.get('#article_image_' + countNum)\n            .should('have.attr', 'src')\n            .and('exist');\n        cy.get('#article_link_' + countNum)\n            .should('include.text', 'View')\n            .should('have.attr', 'href')\n            .and('exist');\n        countNum += 1;\n        let newsCardsHeadings = ':nth-child(' + countNum + ') > .MuiPaper-root > .MuiCardContent-root > .MuiTypography-h5';\n        let newsCardsBodies = ':nth-child(' + countNum + ') > .MuiPaper-root > .MuiCardContent-root > .MuiTypography-body1';\n        cy.get(newsCardsHeadings).invoke('text').should('match', /^[a-zA-Z]*/).and('exist');\n        cy.get(newsCardsBodies).should('include.text', 'This is a media card.').and('exist');\n    });\n});",
+              "err": {},
+              "uuid": "40d19e46-adfe-4555-8046-59f43c2b1a5d",
+              "parentUUID": "1532173c-740b-47fd-bac6-de64b36ffab2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Failed to load news",
+              "fullTitle": "News test suite Failed to load news",
+              "timedOut": null,
+              "duration": 3039,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Given - there is no internet connection\n// When - the user successfully signs in to the app\n/** Then - “failed to load news” error message\n * and a Retry button are displayed\n */\nlogInPage.loadNewsFailed();\ncy.get('#news_failed > .MuiTypography-gutterBottom')\n    .should('contain', 'Failed to load news')\n    .and('be.visible');\ncy.get('.css-12wjmzy-MuiTypography-root')\n    .should('contain', 'Failed to fetch')\n    .and('be.visible');",
+              "err": {},
+              "uuid": "3b6479b5-0108-41f2-9efb-40d2dc27e8db",
+              "parentUUID": "1532173c-740b-47fd-bac6-de64b36ffab2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "News view button is clicked",
+              "fullTitle": "News test suite News view button is clicked",
+              "timedOut": null,
+              "duration": 6514,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "logInPage.login();\n// Given - the news cards are successfully loaded on the screen\ncy.get('div[class=react-swipeable-view-container]', { timeout: 6000 })\n    .its('length')\n    .should('eq', 24);\ncy.url().should('include', 'news');\n// When - the user clicks on the view button of the card\n// Then - user is navigated to the image of the card\ncy.get('#article_link_0').invoke('attr', 'href').then(href => {\n    cy.get('#article_link_0').click();\n    cy.url().should('include', href);\n});",
+              "err": {},
+              "uuid": "6df82e7f-e41b-4f5c-9a6b-4782276d3506",
+              "parentUUID": "1532173c-740b-47fd-bac6-de64b36ffab2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "40d19e46-adfe-4555-8046-59f43c2b1a5d",
+            "3b6479b5-0108-41f2-9efb-40d2dc27e8db",
+            "6df82e7f-e41b-4f5c-9a6b-4782276d3506"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 26075,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "143c9620-e3a0-4ebb-877c-1a4b93b15f71",
+      "title": "",
+      "fullFile": "cypress/integration/login.ts",
+      "file": "cypress/integration/login.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8527c691-714e-4ba2-9d76-b81a0967d218",
+          "title": "Login test suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "User opens the web site for first time (when not logged in yet)",
+              "fullTitle": "Login test suite User opens the web site for first time (when not logged in yet)",
+              "timedOut": null,
+              "duration": 2765,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Given - the user opens web site for the first time (when not logged in yet)\n// Then - login screen with user name and password entries and login button is displayed\ncy.visit('http://localhost:3000');\ncy.get('input[name=username]')\n    .should('have.value', '')\n    .and('be.visible');\ncy.get('input[name=password]')\n    .should('have.value', '')\n    .and('be.visible');\ncy.get('button[id=login_button]')\n    .should('have.text', 'Sign In')\n    .and('be.visible');",
+              "err": {},
+              "uuid": "eb40ac54-622b-4644-acba-38d46d5a844f",
+              "parentUUID": "8527c691-714e-4ba2-9d76-b81a0967d218",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User login failed",
+              "fullTitle": "Login test suite User login failed",
+              "timedOut": null,
+              "duration": 3338,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Given - the user provided wrong user name and/or password\ncy.visit('http://localhost:3000');\ncy.get('input[name=username]')\n    .should('be.visible').type('wrongusername');\ncy.get('input[name=password]')\n    .should('be.visible').type('wrongpassword');\n// When - sign in button is clicked\ncy.get('button[id=login_button]')\n    .should('have.text', 'Sign In')\n    .click();\n// Then - error markers are displayed by user name and/or password entries\ncy.get('p[id=username-helper-text]')\n    .should('have.text', 'Wrong username')\n    .and('be.visible');\ncy.get('p[id=password-helper-text]')\n    .should('have.text', 'Password incorrect')\n    .and('be.visible');\ncy.get('legend[class=css-1z7n62]')\n    .should('have.length', 2);\ncy.get('legend > span')\n    .first()\n    .should('have.text', 'Username');\ncy.get('legend > span')\n    .eq(1)\n    .should('have.text', 'Password');",
+              "err": {},
+              "uuid": "ec92d537-f6ed-4b08-95ff-a1f05235559b",
+              "parentUUID": "8527c691-714e-4ba2-9d76-b81a0967d218",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User login succeed",
+              "fullTitle": "Login test suite User login succeed",
+              "timedOut": null,
+              "duration": 1810,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Given - the user provided right user name and password\ncy.visit('http://localhost:3000');\ncy.get('input[name=username]').type('user1');\ncy.get('input[name=password]').type('pa55word');\n// When - sign in button is clicked\ncy.get('button[id=login_button]').click();\n// Then - user is taken to the news page\ncy.url().should('include', 'news');\ncy.get('.MuiToolbar-root > .MuiTypography-root')\n    .should('contain', 'News');\ncy.get('.MuiTypography-h2')\n    .should('contain', 'Todays top news');\ncy.get('.MuiContainer-root > .MuiTypography-h5')\n    .and('contain', 'Some of the latest news articles for today');",
+              "err": {},
+              "uuid": "4372549e-2641-4edc-83ac-8a92da034c8e",
+              "parentUUID": "8527c691-714e-4ba2-9d76-b81a0967d218",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User opens web site next time (when previously logged in)",
+              "fullTitle": "Login test suite User opens web site next time (when previously logged in)",
+              "timedOut": null,
+              "duration": 1578,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "logInPage.login();\n// Given - the user opens web site next time (when previously logged in)\n// Then - user is taken straight to the news screen\ncy.url().should('include', 'news');\ncy.get('.css-16ybtzv > .MuiTypography-h6')\n    .and('contain', 'You\\'re all caught up!');",
+              "err": {},
+              "uuid": "2a659009-88cd-43de-9416-ca1111d8aff3",
+              "parentUUID": "8527c691-714e-4ba2-9d76-b81a0967d218",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "eb40ac54-622b-4644-acba-38d46d5a844f",
+            "ec92d537-f6ed-4b08-95ff-a1f05235559b",
+            "4372549e-2641-4edc-83ac-8a92da034c8e",
+            "2a659009-88cd-43de-9416-ca1111d8aff3"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 9491,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.0.1"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports"
+      },
+      "version": "6.1.0"
+    }
+  }
+}
