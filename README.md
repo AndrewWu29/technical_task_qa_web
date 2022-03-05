@@ -13,6 +13,19 @@ From the projects root directory, run:
 - `npm start` to run the project
 - `npm test` to run the project automation testing
 
+##
+
+### Testing results
+
+#### Manual tests as file: Manual_Test_Report.pdf
+
+#### Automated tests as file: .\cypress\reports\repot1.html
+
+#### Automated tests vidoes: .\cypress\videos\\*.mp4
+
+#### Bug report as file: Bug_Report.pdf
+
+##
 
 ### Description
 During the test we want you to imagine yourself as a member of our team, with a collective goal of getting our tasks completed.
@@ -104,4 +117,5 @@ We expect that these functions will be tested both manually and automatically by
 
 At Sliide we highly appreciate good communication at all times so, if you have any questions, don’t hesitate to ask   
 
-## Good luck!   
+## Good luck!
+
